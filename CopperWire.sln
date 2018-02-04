@@ -5,12 +5,24 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperWire", "CopperWire\CopperWire.csproj", "{CF479A73-6528-43BF-A002-912C28EA26BE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5480DBC-8E99-47BC-8320-10C1761AA220}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{D5480DBC-8E99-47BC-8320-10C1761AA220}"
 	ProjectSection(SolutionItems) = preProject
-		CopperWire.targets = CopperWire.targets
+		BUILDING.MD = BUILDING.MD
 		LICENSE.TXT = LICENSE.TXT
 		NOTICE.TXT = NOTICE.TXT
 		README.MD = README.MD
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E74B5847-FB60-4167-B5DD-F2F32FFD2A8B}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		CopperWire.targets = CopperWire.targets
+		oneclick-rebuild.ps1 = oneclick-rebuild.ps1
+		rebuild-all.ps1 = rebuild-all.ps1
+		rebuild-docs.ps1 = rebuild-docs.ps1
+		rebuild-lib.ps1 = rebuild-lib.ps1
+		rebuild-linux.ps1 = rebuild-linux.ps1
+		rebuild-micro.ps1 = rebuild-micro.ps1
 	EndProjectSection
 EndProject
 Global

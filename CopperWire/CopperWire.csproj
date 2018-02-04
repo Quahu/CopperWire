@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Import common properties -->
+  <Import Project="../CopperWire.targets" />
+
+  <!-- Basic output assembly properties -->
+  <PropertyGroup>
+    <AssemblyName>CopperWire.Core</AssemblyName>
+    <RootNamespace>CopperWire</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>net45;net46;net47;netstandard1.1;netstandard1.3;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+  
+  <!-- NuGet properties -->
+  <PropertyGroup>
+    <Description>A simple .NET Standard-compatible wrapper for Discord API.</Description>
+    <PackageTags>discord discord-api bots webhooks discord-bots chat dotnet csharp vb-net fsharp</PackageTags>
+  </PropertyGroup>
+  
+  <!-- NuGet packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3' Or '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Net.WebSockets" Version="4.3.2" />
+    <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3' Or '$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+  </ItemGroup>
+
+  <!-- 
+    Don't include the broken System.Net.Http package on .NETFX - this only causes problems. Include the 
+    framework-native version instead.
+  -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'net46' Or '$(TargetFramework)' == 'net47'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+</Project>

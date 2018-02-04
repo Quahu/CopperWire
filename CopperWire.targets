@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Common output properties -->
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <LangVersion>7.1</LangVersion>
+    <Optimize>True</Optimize>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Common NuGet properties -->
+  <PropertyGroup>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Authors>Emzi0767</Authors>
+    <Company>Emzi0767</Company>
+    <PackageLicenseUrl>https://gihub.com/Emzi0767/CopperWire/blob/master/LICENSE.TXT</PackageLicenseUrl>
+    <PackageProjectUrl>https://copperwire.emzi0767.com/</PackageProjectUrl>
+    <PackageIconUrl>https://copperwire.emzi0767.com/logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Emzi0767/CopperWire</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Don't optimize for debug -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  
+  <!-- Version suffixing -->
+  <PropertyGroup Condition="'$(VersionSuffix)' != ''">
+    <Version>$(VersionPrefix)-pre-$(VersionSuffix)</Version>
+    <AssemblyVersion>$(VersionPrefix).$(VersionSuffix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix).$(VersionSuffix)</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>$(VersionPrefix)</Version>
+    <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
+    <FileVersion>$(VersionPrefix).0</FileVersion>
+  </PropertyGroup>
+
+  <!-- Conditional compilation symbols -->
+  <!--
+    .NETFX 4.5 has:
+     - System.Net.WebSockets
+     - System.Net.UdpClient
+     - System.Environment
+     - System.Net.UdpClient#AllowNatTraversal()
+     - System.Text.RegularExpressions.RegexOptions.Compiled
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
+    <DefineConstants>HAS_WEBSOCKET;HAS_UDP;HAS_ENVIRONMENT;HAS_NAT_TRAVERSAL;HAS_COMPILED_REGEX</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    .NETFX 4.6 has:
+     - System.Net.WebSockets
+     - System.Net.UdpClient
+     - System.Environment
+     - System.Net.UdpClient#AllowNatTraversal()
+     - System.Text.RegularExpressions.RegexOptions.Compiled
+     - System.DateTimeOffset.FromUnixTimeSeconds and System.DateTimeOffset#ToUnixTimeSeconds, as well as millisecond equivalents
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net46'">
+    <DefineConstants>HAS_WEBSOCKET;HAS_UDP;HAS_ENVIRONMENT;HAS_NAT_TRAVERSAL;HAS_COMPILED_REGEX;HAS_UNIX_TIME_METHODS</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    .NETFX 4.7 has:
+     - System.Net.WebSockets
+     - System.Net.UdpClient
+     - System.Environment
+     - System.Net.UdpClient#AllowNatTraversal()
+     - System.Text.RegularExpressions.RegexOptions.Compiled
+     - System.DateTimeOffset.FromUnixTimeSeconds and System.DateTimeOffset#ToUnixTimeSeconds, as well as millisecond equivalents
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net47'">
+    <DefineConstants>HAS_WEBSOCKET;HAS_UDP;HAS_ENVIRONMENT;HAS_NAT_TRAVERSAL;HAS_COMPILED_REGEX;HAS_UNIX_TIME_METHODS</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    .NET Standard 1.1 has:
+     - nothing
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1'">
+    <DefineConstants></DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    .NET Standard 1.3 has:
+     - System.Net.WebSockets
+     - System.Net.UdpClient
+     - System.DateTimeOffset.FromUnixTimeSeconds and System.DateTimeOffset#ToUnixTimeSeconds, as well as millisecond equivalents
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <DefineConstants>HAS_WEBSOCKET;HAS_UDP;HAS_UNIX_TIME_METHODS</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+    .NET Standard 2.0 has:
+     - System.Net.WebSockets
+     - System.Net.UdpClient
+     - System.Text.RegularExpressions.RegexOptions.Compiled
+     - System.DateTimeOffset.FromUnixTimeSeconds and System.DateTimeOffset#ToUnixTimeSeconds, as well as millisecond equivalents
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net47'">
+    <DefineConstants>HAS_WEBSOCKET;HAS_UDP;HAS_COMPILED_REGEX;HAS_UNIX_TIME_METHODS</DefineConstants>
+  </PropertyGroup>
+  
+</Project>

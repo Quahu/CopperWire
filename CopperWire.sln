@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E74B5847
 		rebuild-micro.ps1 = rebuild-micro.ps1
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F305A85C-2520-4CD3-83C1-9A0FC6819030}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE.MD = .github\ISSUE_TEMPLATE.MD
+		.github\PULL_REQUEST_TEMPLATE.MD = .github\PULL_REQUEST_TEMPLATE.MD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +44,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F305A85C-2520-4CD3-83C1-9A0FC6819030} = {D5480DBC-8E99-47BC-8320-10C1761AA220}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1E3A994C-883F-4091-B8C2-38DEB5EC3678}

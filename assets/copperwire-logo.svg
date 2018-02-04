@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    This file is a part of CopperWire project.
+    
+    Copyright 2018 Emzi0767
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<svg width="256" height="256" version="1.1" viewBox="0 0 67.733 67.733" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="linearGradient4543" x1="16.604" x2="38.854" y1="252.73" y2="263.56" gradientTransform="translate(-.093267 -.91948)" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset=".45"/>
+      <stop stop-color="#fff" offset=".5"/>
+      <stop offset=".55"/>
+      <stop offset="1"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0 -229.27)">
+    <g transform="matrix(1.3011 0 0 1.3011 -10.198 -79.231)">
+      <path d="m33.867 277.62c3.4934 0 7.0504-1.7521 7.7863-0.99211 1.536 1.5864 2.4685 4.3583 3.7798 4.5357 5.2753 0.71378 12.85-4.0335 12.946-6.4728 0.23778-6.0596-2.3219-18.809-6.5201-25.277-0.80417-1.239-7.6702-4.8115-11.717-4.3467-1.6999 0.19521 0.24044 1.963-0.28348 2.5513-0.64053 0.71923-2.9802-0.75595-5.9909-0.75595m0 30.758c-3.4934 0-7.0504-1.7521-7.7863-0.99211-1.536 1.5864-2.4685 4.3583-3.7798 4.5357-5.2753 0.71378-12.85-4.0335-12.946-6.4728-0.23778-6.0596 2.3219-18.809 6.5201-25.277 0.80417-1.239 7.6702-4.8115 11.717-4.3467 1.6999 0.19521-0.24044 1.963 0.28348 2.5513 0.64053 0.71923 2.9802-0.75595 5.9909-0.75595" fill="#ab6939" stroke="#ff7f00" stroke-width=".52917"/>
+      <rect x="19.417" y="253.52" width="28.899" height="6.6149" ry=".67499" fill="url(#linearGradient4543)"/>
+      <path d="m46.964 253.56c1.2994 0 1.3229 0.01 1.3229 1.3229v3.9688c0 1.333 2.64e-4 1.3229-1.3229 1.3229h-26.194c-1.3092 0-1.3229-0.0405-1.3229-1.3229v-3.9688c0-1.3581-4e-3 -1.3229 1.3229-1.3229h26.194z" fill="none" stroke="#ff7f00" stroke-linejoin="round" stroke-width=".52917"/>
+      <path d="m23.283 268.01c1.6981 3.5352 6.8572 3.5984 10.583 3.5984s8.8852-0.0632 10.583-3.5984" fill="none" stroke="#ff7f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".79375"/>
+    </g>
+  </g>
+</svg>

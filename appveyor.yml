@@ -63,4 +63,4 @@ deploy:
   server: https://www.myget.org/F/copperwire-nightly/api/v2/package
   api_key:
     secure: k0YIk0KMqE3V0avtHJSx6iA2ay3Pw1lwJf7kGLqrZQ/5dLFvv2oNzyG1572hf/VT
-symbol_server: https://www.myget.org/F/copperwire-nightly/api/v2/package
+  symbol_server: https://www.myget.org/F/copperwire-nightly/api/v2/package

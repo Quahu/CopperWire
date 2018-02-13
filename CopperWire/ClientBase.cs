@@ -76,8 +76,8 @@ namespace CopperWire
 
             // set up the logger
             this.EventId = eventId;
-            this.Logger = services.GetRequiredService<ILogger<ClientBase>>();
-            this.Logger.LogTrace(this.EventId, "Logger successfully initialized.");
+            this.Logger = services.GetService<ILogger<ClientBase>>();
+            this.Logger?.LogTrace(this.EventId, "Logger successfully initialized.");
 
             // initialize the plugin container
             this._plugins = new List<PluginBase>();
@@ -101,7 +101,7 @@ namespace CopperWire
             this._plugins.Add(plugin);
             plugin.OnInstalling(this);
 
-            this.Logger.LogInformation(this.EventId, "Installed plugin {0}", typeof(T));
+            this.Logger?.LogInformation(this.EventId, "Installed plugin {0}", typeof(T));
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace CopperWire
                 plugin.OnRemoving(this);
                 this._plugins.Remove(plugin);
 
-                this.Logger.LogInformation(this.EventId, "Removed plugin {0}", typeof(T));
+                this.Logger?.LogInformation(this.EventId, "Removed plugin {0}", typeof(T));
             }
 
             // return the instance

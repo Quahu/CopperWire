@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace CopperWire
 {
@@ -28,5 +29,10 @@ namespace CopperWire
     /// </summary>
     public class RestClient : ClientBase
     {
+        public RestClient(IServiceProvider services)
+            : base(services, new EventId(0, "CopperWire"))
+        {
+
+        }
     }
 }

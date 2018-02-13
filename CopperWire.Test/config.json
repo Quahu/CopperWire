@@ -1,0 +1,11 @@
+﻿{
+  "CopperWire": {
+    "Token": "asdf",
+    "TokenType": "Bot"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Trace"
+    }
+  }
+}

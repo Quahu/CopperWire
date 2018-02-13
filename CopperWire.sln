@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F305
 		.github\PULL_REQUEST_TEMPLATE.MD = .github\PULL_REQUEST_TEMPLATE.MD
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperWire.Logging", "CopperWire.Logging\CopperWire.Logging.csproj", "{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperWire.Test", "CopperWire.Test\CopperWire.Test.csproj", "{29549C34-2CE6-4C15-9267-D58864E2470B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29549C34-2CE6-4C15-9267-D58864E2470B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29549C34-2CE6-4C15-9267-D58864E2470B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29549C34-2CE6-4C15-9267-D58864E2470B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29549C34-2CE6-4C15-9267-D58864E2470B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

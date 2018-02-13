@@ -20,8 +20,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CopperWire.Logging;
 using CopperWire.Plugins;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace CopperWire
 {
@@ -31,6 +34,7 @@ namespace CopperWire
     /// </summary>
     public abstract class ClientBase
     {
+        #region Properties
         /// <summary>
         /// Gets the plugins installed on this client instance.
         /// </summary>
@@ -41,21 +45,43 @@ namespace CopperWire
         /// <summary>
         /// Gets the logger instance for this client.
         /// </summary>
-        public Logger Logger { get; }
+        public ILogger Logger { get; }
+
+        /// <summary>
+        /// Gets the Event ID for events emitted by this client's logger instance.
+        /// </summary>
+        protected EventId EventId { get; }
+
+        /// <summary>
+        /// Gets the configuration settings for this client.
+        /// </summary>
+        protected ClientBaseSettings Settings { get; set; }
+
+        /// <summary>
+        /// Gets the service provider used to initialize this client.
+        /// </summary>
+        public IServiceProvider Services { get; }
+        #endregion
 
         /// <summary>
         /// Initializes this client instance.
         /// </summary>
-        protected ClientBase()
+        /// <param name="services">Services to use for initializing this client.</param>
+        /// <param name="eventId">Event ID for events emitted by this client's logger.</param>
+        protected ClientBase(IServiceProvider services, EventId eventId)
         {
-#warning TODO: Config
+            // get the configuration
+            var cfg = services.GetRequiredService<IOptions<ClientBaseSettings>>();
+            this.Settings = cfg.Value;
+
+            // set up the logger
+            this.EventId = eventId;
+            this.Logger = services.GetRequiredService<ILogger<ClientBase>>();
+            this.Logger.LogTrace(this.EventId, "Logger successfully initialized.");
 
             // initialize the plugin container
             this._plugins = new List<PluginBase>();
             this._pluginsLazy = new Lazy<IReadOnlyList<PluginBase>>(() => new ReadOnlyCollection<PluginBase>(this._plugins));
-
-            // intialize the logger
-            this.Logger = new Logger(LogLevel.Trace);
         }
 
         /// <summary>
@@ -74,6 +100,8 @@ namespace CopperWire
             // it's not; let's install it
             this._plugins.Add(plugin);
             plugin.OnInstalling(this);
+
+            this.Logger.LogInformation(this.EventId, "Installed plugin {0}", typeof(T));
         }
 
         /// <summary>
@@ -97,9 +125,13 @@ namespace CopperWire
             var plugin = this._plugins.FirstOrDefault(x => x is T) as T;
 
             // can we uninstall? if so, do it
-            plugin.OnRemoving(this);
             if (plugin != null)
+            {
+                plugin.OnRemoving(this);
                 this._plugins.Remove(plugin);
+
+                this.Logger.LogInformation(this.EventId, "Removed plugin {0}", typeof(T));
+            }
 
             // return the instance
             return plugin;

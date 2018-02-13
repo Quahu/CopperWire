@@ -31,6 +31,7 @@ namespace CopperWire
     /// </summary>
     public sealed class Client : ClientBase
     {
+        #region Properties
         /// <summary>
         /// Gets the ID of the client's current shard.
         /// </summary>
@@ -45,6 +46,7 @@ namespace CopperWire
         /// Gets the appropriately-typed settings for this client.
         /// </summary>
         private new ClientSettings Settings => base.Settings as ClientSettings;
+        #endregion
 
         /// <summary>
         /// Initializes this client instance.

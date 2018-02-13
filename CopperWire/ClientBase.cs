@@ -20,6 +20,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CopperWire.Http;
 using CopperWire.Plugins;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,16 +37,26 @@ namespace CopperWire
     {
         #region Properties
         /// <summary>
-        /// Gets the plugins installed on this client instance.
+        /// Gets the service provider used to initialize this client.
         /// </summary>
-        public IReadOnlyList<PluginBase> Plugins => this._pluginsLazy.Value;
-        private List<PluginBase> _plugins;
-        private Lazy<IReadOnlyList<PluginBase>> _pluginsLazy;
+        public IServiceProvider Services { get; }
 
         /// <summary>
         /// Gets the logger instance for this client.
         /// </summary>
         public ILogger Logger { get; }
+
+        /// <summary>
+        /// Gets the API client used to handle REST requests.
+        /// </summary>
+        public ApiClient ApiClient { get; }
+
+        /// <summary>
+        /// Gets the plugins installed on this client instance.
+        /// </summary>
+        public IReadOnlyList<PluginBase> Plugins => this._pluginsLazy.Value;
+        private List<PluginBase> _plugins;
+        private Lazy<IReadOnlyList<PluginBase>> _pluginsLazy;
 
         /// <summary>
         /// Gets the Event ID for events emitted by this client's logger instance.
@@ -56,11 +67,6 @@ namespace CopperWire
         /// Gets the configuration settings for this client.
         /// </summary>
         protected ClientBaseSettings Settings { get; set; }
-
-        /// <summary>
-        /// Gets the service provider used to initialize this client.
-        /// </summary>
-        public IServiceProvider Services { get; }
         #endregion
 
         /// <summary>
@@ -82,8 +88,12 @@ namespace CopperWire
             // initialize the plugin container
             this._plugins = new List<PluginBase>();
             this._pluginsLazy = new Lazy<IReadOnlyList<PluginBase>>(() => new ReadOnlyCollection<PluginBase>(this._plugins));
+
+            // initialize the api client
+            this.ApiClient = services.GetRequiredService<ApiClient>();
         }
 
+        #region Plugin management
         /// <summary>
         /// Installs a plugin into this <see cref="ClientBase"/> instance.
         /// </summary>
@@ -136,5 +146,6 @@ namespace CopperWire
             // return the instance
             return plugin;
         }
+        #endregion
     }
 }

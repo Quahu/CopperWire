@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using CopperWire.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,7 +26,9 @@ namespace CopperWire.Test
                     .AddConsole(cfg.GetSection("Logging"))
                     .AddDebug(LogLevel.Debug))
                 .AddLogging()
-                .BuildServiceProvider();
+                //.AddSingleton<IWebProxy>(new WebProxy("http://localhost", 1))
+                .AddSingleton<ApiClient>()
+                .BuildServiceProvider(true);
 
             var client0 = new Client(srv, 0, 2);
             var client1 = new Client(srv, 1, 2);

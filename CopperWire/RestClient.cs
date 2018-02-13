@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CopperWire.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace CopperWire
@@ -29,10 +31,14 @@ namespace CopperWire
     /// </summary>
     public class RestClient : ClientBase
     {
+
+        /// <summary>
+        /// Initializes this client instance.
+        /// </summary>
+        /// <param name="services"></param>
         public RestClient(IServiceProvider services)
             : base(services, new EventId(0, "CopperWire"))
         {
-
         }
     }
 }

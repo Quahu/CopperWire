@@ -55,7 +55,6 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="WebSocket\" />
-    <Folder Include="Http\" />
   </ItemGroup>
 
 </Project>

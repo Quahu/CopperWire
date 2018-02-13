@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperWire", "CopperWire\CopperWire.csproj", "{CF479A73-6528-43BF-A002-912C28EA26BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CopperWire", "CopperWire\CopperWire.csproj", "{CF479A73-6528-43BF-A002-912C28EA26BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{D5480DBC-8E99-47BC-8320-10C1761AA220}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F305
 		.github\PULL_REQUEST_TEMPLATE.MD = .github\PULL_REQUEST_TEMPLATE.MD
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopperWire.Logging", "CopperWire.Logging\CopperWire.Logging.csproj", "{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF479A73-6528-43BF-A002-912C28EA26BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA5295B-5F43-4944-90B7-43D4F6DBAF4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

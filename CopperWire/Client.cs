@@ -76,7 +76,7 @@ namespace CopperWire
             base.Settings = cfg.Value;
 
             // trace this
-            this.Logger?.LogTrace(this.EventId, "Client initialized; shard={0} count={1}", this.ShardId, this.ShardCount);
+            this.Logger.LogTrace(this.EventId, "Client initialized; shard={0} count={1}", this.ShardId, this.ShardCount);
         }
     }
 }

@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CopperWire.Http;
+using CopperWire.Logging;
 using CopperWire.Plugins;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -82,15 +83,15 @@ namespace CopperWire
 
             // set up the logger
             this.EventId = eventId;
-            this.Logger = services.GetService<ILogger<ClientBase>>();
-            this.Logger?.LogTrace(this.EventId, "Logger successfully initialized.");
+            this.Logger = services.GetService<ILogger<ClientBase>>() ?? new NullLogger<ClientBase>();
+            this.Logger.LogTrace(this.EventId, "Logger successfully initialized.");
 
             // initialize the plugin container
             this._plugins = new List<PluginBase>();
             this._pluginsLazy = new Lazy<IReadOnlyList<PluginBase>>(() => new ReadOnlyCollection<PluginBase>(this._plugins));
 
             // initialize the api client
-            this.ApiClient = services.GetRequiredService<ApiClient>();
+            this.ApiClient = services.GetService<ApiClient>() ?? new ApiClient();
         }
 
         #region Plugin management
@@ -111,7 +112,7 @@ namespace CopperWire
             this._plugins.Add(plugin);
             plugin.OnInstalling(this);
 
-            this.Logger?.LogInformation(this.EventId, "Installed plugin {0}", typeof(T));
+            this.Logger.LogDebug(this.EventId, "Installed plugin {0}", typeof(T));
         }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace CopperWire
                 plugin.OnRemoving(this);
                 this._plugins.Remove(plugin);
 
-                this.Logger?.LogInformation(this.EventId, "Removed plugin {0}", typeof(T));
+                this.Logger.LogDebug(this.EventId, "Removed plugin {0}", typeof(T));
             }
 
             // return the instance
